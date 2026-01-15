@@ -26,6 +26,17 @@ SECRET_KEY = 'django-insecure-jk!j@8ip_z^%-e6wikxx8w6qyh&fsqqjl5y#08p%&!^9v!=0ow
 DEBUG = True
 
 ALLOWED_HOSTS = []
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'examdb',
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
 
 
 # Application definition
@@ -37,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework','api',
+    'rest_framework','corsheaders','api',
 ]
 
 MIDDLEWARE = [
@@ -48,7 +59,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'backend.urls'
 
